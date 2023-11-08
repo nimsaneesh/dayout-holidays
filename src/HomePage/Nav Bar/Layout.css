@@ -1,0 +1,38 @@
+body {
+  margin-right: 120px;
+  overflow-x: hidden;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 !important;
+  background-color: transparent;
+  color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1000;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1em;
+  font-size: 18px; /* Adjust the font size as needed */
+}
+
+.navbar-links {
+  margin-left: auto;
+}
+
+.navbar-links a:last-child {
+  margin-right: 0;
+}

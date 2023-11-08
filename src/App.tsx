@@ -1,25 +1,38 @@
+// src/App.tsx
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from './HomePage/HomePage';
+import InquiryPage from './HomePage/AnimatedText/EnquireForm/EnquireForm';
+import SignupForm from './login form/siggnUp';
+import Layout from './HomePage/Nav Bar/Layout';
+import AdventureDetailPage from './AdventureDetailPage/adventureDetailpage';
+import ViewCart from './Cart/viewCart';
+import CheckoutPage from './Cart/checkoutPage';
 function App() {
+  const dummyData = [
+    { id: 1, name: 'Product 1', quantity: 2, price: 10.99 },
+    { id: 2, name: 'Product 2', quantity: 1, price: 19.99 },
+    // Add more dummy data as needed
+  ];
+  const total = dummyData.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+      <Route path="/" element={<Layout />}>
+         <Route index element={<HomePage />} /> 
+         
+         <Route path="/inquiry" element={<InquiryPage />} />
+         <Route path="contact" element={<SignupForm />} />
+         <Route path="/adventure/:id" element={<AdventureDetailPage/>} />
+         <Route path="/cart" element={<ViewCart cartItems={dummyData} />} />
+         <Route path="/checkout" element={<CheckoutPage cartItems={dummyData} total={total}  />} />
+
+        </Route>
+      </Routes>
+      </BrowserRouter>
+      </div>
   );
 }
 
